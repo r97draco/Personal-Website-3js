@@ -1,0 +1,142 @@
+@import url("https://use.typekit.net/jmk3xov.css");
+body{
+  background-color: black;
+  scroll-behavior: smooth;
+  overflow: auto;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* z-index: 2; */
+}
+
+
+:root {
+  --dark-bg: rgba(61, 204, 236, 0.55);
+  --spacing: 350px;
+
+  /* font-family: brandon-Serif1, sans-serif; */
+  /* font-family: elevon, sans-serif; */
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  /* font-family: "bd-geminis",sans-serif; */
+
+  font-weight: 400;
+  font-style: normal;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+nav ul li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+main {
+  width: 100vw;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  margin: 0px auto;
+  padding: 120px 0px;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+h1,
+h2,
+h3,
+blockquote {
+  font-family: elevon, sans-serif;
+  /* font-family: cubano-sharp; */
+
+  /* font-weight: 700; */
+  font-style: normal;
+}
+h2{
+  color: rgb(255, 255, 0);
+}
+h3{
+  color: bisque;
+}
+
+a{
+  color: rgb(0, 0, 0);
+  font-family: monospace;
+  font-style: normal;
+}
+
+header {
+  font-family: cubano-sharp;
+
+  background: var(--dark-bg);
+  color: rgb(252, 252, 252);
+  grid-column: 2 / span 5;
+  font-size: 2.5rem;
+  padding: 2rem;
+  margin-bottom: var(--spacing);
+  border-radius: 10px;
+}
+
+section {
+
+  grid-column: 2 / 8;
+  padding: 1rem;
+  background: var(--dark-bg);
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  border-radius: 5px;
+}
+
+.hidden{
+  visibility: hidden ;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+  grid-column: 2 / span 9;
+  margin-bottom: var(--spacing);
+}
+
+blockquote p {
+  color: black;
+  background-color: white;
+  font-size: 4rem;
+  display: inline;
+  line-height: 1;
+}
+
+.left {
+  grid-column: 6 / 12;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  main {
+    padding: 30px 0px;
+    display: inline-flexbox;
+  }
+
+  section,header, main{
+    grid-column: auto;
+  }
+  header
+  
+}
