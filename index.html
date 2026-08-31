@@ -1,124 +1,186 @@
-<!DOCTYPE html>
- 
+<!doctype html>
+<html lang="en">
 <head>
-  <title> Resume3JS </title>
-  <meta charset="utf-8" />
-  <link rel="icon" href="roop.jpg" type="image">
-  <style>
-	body{
-	margin: 0;
-	}  
-  </style>
-	<link rel="stylesheet" href="./style.css">
-  <script type="module">
-    // Find the latest version by visiting https://cdn.skypack.dev/three.
-    import * as THREE from 'https://cdn.skypack.dev/three';
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jagroop Singh is a software developer focused on building scalable, performant, and accessible products with extra attention to detail.">
+  <title>Jagroop Singh | Software Developer</title>
+  <link rel="icon" href="roop.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-	<!-- <canvas id="bg"></canvas> -->
-  <canvas id="bg"></canvas>
-	<main>
+  <canvas id="bg" aria-hidden="true"></canvas>
 
-    <header>
-      <h1>Jagroop Singh </h1> 
-      <p style="color: black;">A Software Developer</p>
-    </header>
-    
-    <section>
-      <nav>
-        <ul>
-          <li><a href="#education">Education</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#work">Work History</a></li>
-        </ul>
-      </nav>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Jagroop Singh, home">JS</a>
+    <nav aria-label="Primary navigation">
+      <a href="#about">About</a>
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+    </nav>
+    <a class="header-link" href="https://github.com/r97draco" target="_blank" rel="noreferrer">GitHub</a>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Software Developer · Regina, SK, Canada</p>
+        <h1 id="hero-title">Jagroop<br>Singh</h1>
+        <p class="hero-intro">Software Developer focused on building products with extra attention to detail.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View selected work</a>
+          <a class="button button-secondary" href="https://github.com/r97draco" target="_blank" rel="noreferrer">GitHub profile</a>
+        </div>
+      </div>
+      <div class="hero-index" aria-hidden="true"><span>Portfolio</span><span>2026</span></div>
     </section>
 
-    <blockquote class="left">
-      <p>Knowledge is Power</p>
-    </blockquote>
-
-    <section id="education">
-      <h2>📜 Education</h2>
-      <p>
-        <h3>Undergraduate Diploma in Computer Science (8.4/10 GPA)</h3>
-        University of Regina, SK
-      </p>
-
-      <p>
-        I recently served on course staff as a Student Research Assistant for Hill and Levene Schools of Business. In addition to my focus on software engineering, I also take interest in competitive programming, physics, and ios development.
-      </p>
-
+    <section class="content-band intro-band" id="about" aria-labelledby="about-title">
+      <div class="section-label"><span>01</span><h2 id="about-title">About</h2></div>
+      <div class="lead-copy">
+        <p>Software Developer at HUB International Limited. I am passionate about building products that are scalable, performant, and accessible.</p>
+      </div>
     </section>
 
-    <section class="left" id="projects">
-      <h2>👩🏽‍🚀 Projects</h2>
+    <section class="content-band" id="work" aria-labelledby="work-title">
+      <div class="section-label"><span>02</span><h2 id="work-title">Work experience</h2></div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="role-heading">
+            <div><p class="timeline-meta">HUB International Limited · Regina, SK</p><h3>Software Developer</h3></div>
+            <span class="role-date">Nov 2024 — Present</span>
+          </div>
+          <p>Designed and implemented an administrative platform for the Caddie application with role-based access control, state persistence, pagination, optimized data fetching, and multi-user state management. Enhanced and maintained the React Native Caddie Adjuster iPad application with SQLite integration and managed iOS builds and releases through Xcode and App Store Connect. Managed CI/CD and cloud workflows using AWS Amplify, Lambda, S3, EC2, and CloudWatch.</p>
+          <ul class="tags" aria-label="Technologies"><li>React</li><li>React Native</li><li>SQLite</li><li>AWS</li><li>CI/CD</li><li>Xcode</li></ul>
+        </article>
 
-      <p>
-        <h3>1. Python Server</h3>
-          Simulate how a Server and Client communicates using Python
-          <br>
-          <a href="https://github.com/r97draco/python-server">github</a>
-      </p>
+        <article class="timeline-item">
+          <div class="role-heading">
+            <div><p class="timeline-meta">Parametrics.ag · Remote</p><h3>Software Developer</h3></div>
+            <span class="role-date">Jul 2023 — Nov 2024</span>
+          </div>
+          <p>Developed and maintained React web applications, built Material UI dashboards and ECharts visualizations, and implemented Mapbox-based geospatial analytics.</p>
+          <ul class="tags" aria-label="Technologies"><li>React</li><li>Redux</li><li>React Hooks</li><li>Context API</li><li>AWS Cognito</li><li>Mapbox</li><li>ECharts</li></ul>
+        </article>
 
-      <p>
-        <h3>2. Grocery Management System</h3>
-           Developed an advanced grocery inventory record keeping system in Web(HTML, Javascript, CSS, PHP, mySQL, Ajax)	
-          <br>
-          <a href="http://www2.cs.uregina.ca/~jse553/jsGroc/php/index.php">Working Site</a>
-      </p>
+        <article class="timeline-item">
+          <div class="role-heading">
+            <div><p class="timeline-meta">Khalsa Labs · Remote</p><h3>Web Developer</h3></div>
+            <span class="role-date">Sep 2022 — Jul 2023</span>
+          </div>
+          <p>Crafted highly responsive websites using React and Python, enhancing user engagement while improving application performance and usability.</p>
+          <ul class="tags" aria-label="Technologies"><li>React Native</li><li>CircuitPython</li><li>React</li><li>Django</li><li>Redux</li></ul>
+        </article>
 
-      <p>
-        <h3>3. Personal Portfolio Website</h3>
-          Dynamic responsive website using vite.js, vue.js and three.js 
-          <br>
-          <a href="https://github.com/r97draco/mypro">github</a>
-      </p>
-
-      <h2>🏆 Accomplishments</h2>
-
-      <p>
-        <ul>
-          <li>10 CGPA in HighSchool</li>
-          <li>Merit Certificate in Senior Secondary School</li>
-          <li>UofR International Entrance Award 2020</li>
-        </ul>
-      </p>
-
+        <article class="timeline-item">
+          <div class="role-heading">
+            <div><p class="timeline-meta">University of Regina · Regina, SK</p><h3>Training &amp; Online Course Assistant (Co-op)</h3></div>
+            <span class="role-date">Aug 2021 — Aug 2022</span>
+          </div>
+          <p>Provided technical support for learning management systems and remote proctoring tools, improving the instructor and student experience.</p>
+          <ul class="tags" aria-label="Technologies"><li>Moodle</li><li>Windows</li><li>Proctortrack</li><li>Configuration Management</li></ul>
+        </article>
+      </div>
     </section>
 
-    <blockquote>
-      <p>In order to be irreplaceable, one must always be different <br>-Albert Einstein</p>
-    </blockquote>
-
-    <section id="work">
-      <h2>🌮 Work History</h2>
-
-      <h3>+ Training & Course Assistant (Tech Support)	</h3>
-      <h4>Hill and Levene Schools of Business, University of Regina, SK	</h4>
-      <p>
-        Skills: Help Desk Support · Technical Support · Research · Creative Problem Solving · Learning Management Systems
-      </p>
-      <h3>+ Student Election Officer </h3>
-      <h4>URSU, University of Regina, SK</h4>
-      <p>
-        Skills: Research · Creative Problem Solving · Team Work
-      </p>
+    <section class="content-band" id="education" aria-labelledby="education-title">
+      <div class="section-label"><span>03</span><h2 id="education-title">Education</h2></div>
+      <div class="education-list">
+        <article class="education-item">
+          <div class="role-heading">
+            <div><p class="timeline-meta">University of Regina</p><h3>B.Sc. Honours in Computer Science</h3></div>
+            <span class="role-date">Sep 2023 — Dec 2026</span>
+          </div>
+        </article>
+        <article class="education-item">
+          <div class="role-heading">
+            <div><p class="timeline-meta">University of Regina</p><h3>Undergraduate Diploma in Computer Science</h3></div>
+            <span class="role-date">Jan 2020 — Jun 2022</span>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <blockquote class="left">
-      <p>boop beep boop!</p>
-    </blockquote>
+    <section class="content-band skills-band" id="skills" aria-labelledby="skills-title">
+      <div class="section-label"><span>04</span><h2 id="skills-title">Skills</h2></div>
+      <ul class="skill-grid">
+        <li>JavaScript</li><li>C++</li><li>React / Next.js</li><li>Node.js</li>
+        <li>REST APIs</li><li>Mapbox</li><li>Data Visualization</li><li>Python</li>
+        <li>AWS</li><li>Docker</li><li>MongoDB</li><li>SQL</li>
+        <li>Firebase</li><li>Django</li><li>Material UI</li><li>Tailwind CSS</li>
+      </ul>
+    </section>
 
-    <section class="left, hidden ">
+    <section class="content-band projects-band" id="projects" aria-labelledby="projects-title">
+      <div class="section-label"><span>05</span><h2 id="projects-title">Projects</h2></div>
+      <div class="project-list">
+        <article class="project featured-project">
+          <div class="project-number">01</div>
+          <div class="project-content">
+            <p class="project-award">Cohort 7 · Grand Prize Winner · $10K</p>
+            <h3>PetDrifts</h3>
+            <p>Developed a React Native mobile application and embedded firmware for a pet activity tracking device, implementing Bluetooth Low Energy communication, device synchronization, and real-time sensor data transfer. Built accelerometer and gyroscope-based activity monitoring pipelines and custom BLE handshaking protocols.</p>
+            <ul class="tags" aria-label="Technologies"><li>React Native</li><li>Bluetooth LE</li><li>Python</li><li>IoT</li></ul>
+          </div>
+        </article>
+
+        <article class="project featured-project">
+          <div class="project-number">02</div>
+          <div class="project-content">
+            <p class="project-award">HackED 2024 · University of Alberta</p>
+            <h3>Grecipe</h3>
+            <p>Built a full-stack grocery and fitness management platform integrating ML-based receipt scanning to extract items and update inventory in real time. Implemented recipe recommendations, budget tracking, and family-level access control.</p>
+            <ul class="tags" aria-label="Technologies"><li>React</li><li>Node.js</li><li>MongoDB</li><li>TensorFlow</li><li>Firebase</li></ul>
+          </div>
+        </article>
+
+        <article class="project featured-project">
+          <div class="project-number">03</div>
+          <div class="project-content">
+            <p class="project-award">CAIDAC Project</p>
+            <h3>Twitter Network Analysis</h3>
+            <p>Processed large-scale Twitter datasets to construct directed user and tweet-level graphs capturing retweets, replies, and quotes. Generated GraphML outputs for community detection and visualization in Gephi.</p>
+            <ul class="tags" aria-label="Technologies"><li>Python</li><li>Linux</li><li>NetworkX</li><li>GraphML</li><li>Dask</li></ul>
+          </div>
+        </article>
+
+        <article class="project featured-project">
+          <div class="project-number">04</div>
+          <div class="project-content">
+            <h3>Kernel-Level Filesystem I/O Interception Defense Against Ransomware</h3>
+            <p>Designed a kernel-level ransomware defense model using filesystem I/O interception, copy-on-write shadowing, and storage-aware recovery mechanisms. Analyzed cross-layer interactions between storage and memory access patterns to improve early detection of malicious encryption behaviour.</p>
+            <ul class="tags" aria-label="Technologies"><li>OS Security</li><li>Kernel</li><li>Filesystem</li><li>C</li><li>C++</li></ul>
+          </div>
+        </article>
+
+        <div class="project-grid">
+          <article class="compact-project"><span>05</span><h3>Agtech App</h3><p>Built a React Mapbox GL component for rendering polygons and displaying live API data inside a larger web application.</p><ul class="tags"><li>React</li><li>Mapbox GL</li><li>GeoJSON</li><li>MUI</li></ul></article>
+          <article class="compact-project"><span>06</span><h3>Furniture Shop</h3><p>Designed a responsive storefront with cart and checkout flows.</p><ul class="tags"><li>React</li><li>Tailwind CSS</li><li>Axios</li><li>Jotai</li></ul></article>
+          <article class="compact-project"><span>07</span><h3>Fruitify</h3><p>Created a responsive fruit nutrition application backed by an Express server and chart-based interface.</p><ul class="tags"><li>React</li><li>Node.js</li><li>Express</li><li>Tailwind CSS</li></ul></article>
+          <article class="compact-project"><span>08</span><h3>Library Manager</h3><p>Built a desktop tool to manage books, users, and transactions in SQLite.</p><ul class="tags"><li>Python</li><li>Tkinter</li><li>SQLite</li></ul></article>
+          <article class="compact-project"><span>09</span><h3>LSUSB-UI</h3><p>Created a cross-platform interface for the open-source LSUSB device and port inspection tool.</p><ul class="tags"><li>Electron</li><li>LSUSB</li><li>CSS</li></ul></article>
+          <article class="compact-project"><span>10</span><h3>Grocery Application</h3><p>Developed a web-based grocery inventory management system.</p><ul class="tags"><li>PHP</li><li>MySQL</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></article>
+          <article class="compact-project"><span>11</span><h3>API Gauge</h3><p>Built a command-line tool for measuring API performance under concurrent request load.</p><ul class="tags"><li>Rust</li><li>Tokio</li><li>Serde</li><li>CLI</li></ul></article>
+          <article class="compact-project"><span>12</span><h3>3D Portfolio</h3><p>Created a space-themed interactive portfolio experience.</p><ul class="tags"><li>JavaScript</li><li>Three.js</li><li>Vite</li><li>3D Models</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <p class="eyebrow">More work on GitHub</p>
+      <h2 id="closing-title">Explore the rest of my repositories and experiments.</h2>
+      <p class="closing-copy">Python, sockets, Selenium, Docker, REST APIs, scripts, and more.</p>
+      <a class="button button-primary" href="https://github.com/r97draco" target="_blank" rel="noreferrer">View GitHub profile</a>
     </section>
   </main>
 
-  <script src='https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
-  <script src='script.js'></script>
+  <footer><span>Jagroop Singh</span><span>Regina, SK, Canada</span><a href="#top">Back to top ↑</a></footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

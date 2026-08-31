@@ -1,179 +1,104 @@
-// import * as THREE from 'https://cdn.skypack.dev/three';
-
-// import * as THREE from 'https://cdn.skypack.dev/three';
+const canvas = document.querySelector("#bg");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x07090b, 0.018);
 
-const camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.1, 1000 );
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 500);
+camera.position.set(0, 0, 34);
 
-const renderer = new THREE.WebGL1Renderer({
-  canvas: document.querySelector("#bg"),
-  antialias: true,
-  // alpha: true,
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+renderer.setClearColor(0x07090b, 1);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const starCount = window.innerWidth < 700 ? 650 : 1200;
+const starPositions = new Float32Array(starCount * 3);
+
+for (let index = 0; index < starPositions.length; index += 3) {
+  starPositions[index] = THREE.MathUtils.randFloatSpread(130);
+  starPositions[index + 1] = THREE.MathUtils.randFloatSpread(90);
+  starPositions[index + 2] = THREE.MathUtils.randFloatSpread(130) - 20;
+}
+
+const starGeometry = new THREE.BufferGeometry();
+starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
+
+const starMaterial = new THREE.PointsMaterial({
+  color: 0xdfe7dc,
+  size: 0.12,
+  sizeAttenuation: true,
+  transparent: true,
+  opacity: 0.82,
 });
 
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-camera.position.setX(-3);
+const starField = new THREE.Points(starGeometry, starMaterial);
+scene.add(starField);
 
-renderer.render(scene, camera);
+const knotGeometry = new THREE.TorusKnotGeometry(7.2, 0.42, 140, 18);
+const knotMaterial = new THREE.MeshStandardMaterial({
+  color: 0x263127,
+  emissive: 0x0b1907,
+  metalness: 0.68,
+  roughness: 0.34,
+});
+const knot = new THREE.Mesh(knotGeometry, knotMaterial);
+knot.position.set(window.innerWidth < 800 ? 7 : 13, -1.5, -4);
+knot.rotation.set(0.2, 0.5, -0.25);
+scene.add(knot);
 
-const loader = new THREE.TextureLoader();
+const accentLight = new THREE.PointLight(0xa8ff60, 2.4, 80);
+accentLight.position.set(13, 8, 15);
+scene.add(accentLight);
 
-const spaceTexture = loader.load('space.png');
-spaceTexture.minFilter = THREE.LinearFilter;
-scene.background = spaceTexture;
+const fillLight = new THREE.PointLight(0xbcc9ff, 1.3, 70);
+fillLight.position.set(-14, -7, 8);
+scene.add(fillLight, new THREE.AmbientLight(0xffffff, 0.18));
 
-const geometry = new THREE.TorusKnotGeometry(20, 1, 100, 100);
-// const geometry = new THREE.TorusGeometry(20, 1, 100, 100);
-// const material = new THREE.MeshStandardMaterial({
-//   color: 0xbbbbbb,
-//   wireframe: true,
-// });
-const torusTexture= loader.load('space.jpg');
-const material = new THREE.MeshStandardMaterial({map :torusTexture });
+let scrollProgress = 0;
+let pointerX = 0;
+let pointerY = 0;
 
-const torus = new THREE.Mesh(geometry, material);
-torus.position.z = -20;
-torus.position.x = 1;
-torus.position.y = -2;
-
-scene.add( torus);
-
-
-// const loader = new THREE.TextureLoader();
-// const tex1 = loader.load('crate.gif');
-// let boxBuf = new THREE.BoxBufferGeometry(1, 1,1);
-// let boxMat = new THREE.MeshBasicMaterial({ map: tex1 });
-// const mesh = new THREE.Mesh(boxBuf, boxMat);
- 
-// mesh.position.z = -4;
-// mesh.position.x = 0;
-// mesh.position.y = 0;
-// scene.add(mesh);
-
-
-const moonTexture = loader.load("norm.jpg");
-const moon = new THREE.Mesh(
-  new THREE.IcosahedronBufferGeometry(1, 1),
-  new THREE.MeshBasicMaterial({map:moonTexture})
-);
-moon.position.setX(2);
-moon.position.setY(2.5);
-moon.position.setZ(10);
-
-scene.add(moon);
-
-
-const pointLight = new THREE.PointLight(0xaaaaaa);
-pointLight.position.set(30, 5, -10);
-const ambientLight = new THREE.AmbientLight(0x555555);
-scene.add(pointLight, ambientLight);
-
-
-function addStar() {
-  const starTexture = loader.load('white.png');
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({map: starTexture})
-  const star = new THREE.Mesh(geometry, material);
-
-  const [x, y, z] = Array(3)
-    .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100));
-
-  star.position.set(x, y, z);
-  scene.add(star);
+function updateScrollProgress() {
+  const scrollable = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+  scrollProgress = window.scrollY / scrollable;
 }
 
-Array(200).fill().forEach(addStar);
-
-const boxTexture = loader.load("crate.gif");
-
-const box = new THREE.Mesh(
-  new THREE.BoxGeometry(2, 2, 2),
-  // new THREE.MeshStandardMaterial({
-  // color: 0xbbbbbb,
-  // wireframe: true,
-  // })
-  new THREE.MeshBasicMaterial({map:boxTexture})
-);
-scene.add(box);
-box.position.z = 20;
-box.position.x = 1;
-box.position.y = -2;
-
-const roopTexture = loader.load('roop.jpg');
-const roop = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial({map:roopTexture})
-);
-
-scene.add(roop);
-
-
-const earthTexture= loader.load('cloud.jpg');
-const earth = new THREE.Mesh(
-  new THREE.SphereGeometry(4, 32, 32),
-  // new THREE.MeshStandardMaterial({
-  // color: 0xbbbbbb,
-  // wireframe: true,
-  // })
-  new THREE.MeshBasicMaterial({map:earthTexture})
-);
-scene.add(earth);
-
-earth.position.z = 15;
-earth.position.setX(-10);
-
-roop.position.z = -5;
-roop.position.x = 2;
-
-
-function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
-  earth.rotation.x += 0.0;
-  earth.rotation.y += 0.0;
-  earth.rotation.z -= 0.1;
-
-  //roop.position.z = t * -.0009;
-  roop.rotation.y += 0.01;
-  roop.rotation.z += 0.01;
-
-  box.rotation.x -= 0.01;
-  box.rotation.z += 0.01;
-
-  camera.position.z = t * -0.005;
-  camera.position.x = t * 0.0003;
+function handlePointerMove(event) {
+  pointerX = event.clientX / window.innerWidth - 0.5;
+  pointerY = event.clientY / window.innerHeight - 0.5;
 }
 
-document.body.onscroll = moveCamera;
-moveCamera();
+function handleResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  knot.position.x = window.innerWidth < 800 ? 7 : 13;
+}
 
-function animate() {
-  requestAnimationFrame(animate);
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("pointermove", handlePointerMove, { passive: true });
+window.addEventListener("resize", handleResize);
+updateScrollProgress();
 
-  // torus.rotation.x += 0.01;
-  // torus.rotation.y += 0.005;
-  // torus.rotation.z += 0.01;
-  torus.rotation.x += 0.0001;
-  torus.rotation.y += 0.01;
-  torus.rotation.z += 0;
+const clock = new THREE.Clock();
 
-  moon.rotation.x += 0.005;
-  moon.rotation.y += 0.005;
-  moon.rotation.z += 0.01;
+function render() {
+  const elapsed = clock.getElapsedTime();
+  const motionScale = reduceMotion.matches ? 0 : 1;
 
+  knot.rotation.x = 0.2 + scrollProgress * 1.2 + elapsed * 0.025 * motionScale;
+  knot.rotation.y = 0.5 + scrollProgress * 2.4 + elapsed * 0.04 * motionScale;
+  starField.rotation.y = scrollProgress * 0.5 + pointerX * 0.04 * motionScale;
+  starField.rotation.x = pointerY * 0.025 * motionScale;
 
-  earth.rotation.z -= 0.01;
-  earth.rotation.x += 0.0;
-  earth.rotation.y += 0.0;
-
-  //controls.update();
+  camera.position.x += (pointerX * 1.2 * motionScale - camera.position.x) * 0.025;
+  camera.position.y += (-pointerY * 0.8 * motionScale - camera.position.y) * 0.025;
+  camera.position.z = 34 - scrollProgress * 5;
 
   renderer.render(scene, camera);
+  requestAnimationFrame(render);
 }
 
-animate();
-
-
+render();
